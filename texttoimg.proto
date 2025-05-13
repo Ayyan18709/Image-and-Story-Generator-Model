@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package storyimage;
+
+// The request message containing the prompt
+message TextRequest {
+  string prompt = 1;
+}
+
+// The response message containing the story and images
+message StoryImageResponse {
+  string story = 1;
+  repeated string images_base64 = 2;
+}
+
+// The service definition
+service StoryImageGeneratorService {
+  // Generates a story and images based on the input prompt
+  rpc GenerateStoryAndImages (TextRequest) returns (StoryImageResponse);
+}
